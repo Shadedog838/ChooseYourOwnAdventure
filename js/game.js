@@ -1,46 +1,119 @@
 // NOTE - You must have a level with the name "start".  This is used as the first level in the game.
 
 var game = {
-    music: "98_Lost_Mine.mp3",
-    background_image: "intro-bg.jpg",
+    background_image:"https://jooinn.com/images/dark-room-9.jpg",
     levels: {
 
-        start: {
-            message: "You come across a dark cave",
+        room: {
+            message: "You wake up in an empty unknown room. There is only a window and two staircases. Go up, or go down?",
+    
             choices: [
                 {
-                    text: "Enter the cave",
-                    nextLevel: "cave",
+                    text: "Up",
+                    nextLevel: "up",
                 },
 
                 {
-                    text: "Keep on moving",
-                    nextLevel: "field",
+                    text: "Down",
+                    nextLevel: "Down",
+                },
+
+            ]
+        },
+
+        up: {
+            message: "Leads to a rooftop with a suspension bridge connected to the next building. Cross or wait at current building?",
+            background_image:"https://steemitimages.com/DQmXy1s5NwHsb8faTA3WK4JiudqinJN9y78kVFuHq4ZHHTc/rooftop1.jpg",
+            choices: [
+                {
+                    text: "wait",
+                    nextLevel: "Wait",
+                },
+                {
+                  text:"Cross",
+                  nextLevel:"Cross",
                 },
             ]
         },
 
-        cave: {
-            background_image: "fire.gif",
-            music: "Final-Fantasy-7-Boss-Battle.mp3",
-            message: "You come across a fire monster or something!",
+        Cross: {
+            message: "The rooftop looks the same as the last. As you go around the door you see a masked figure. Approch or hide?",
+            background_image:"http://infornicle.com/wp-content/uploads/2015/01/rooftop.jpg",
             choices: [
                 {
-                    text: "Start over",
-                    nextLevel: "start",
+                    text: "Approach",
+                    nextLevel: "Approach",
+                },
+                {
+                    text:"Hide",
+                    nextLevel:"Hide",
                 },
             ]
         },
-
-        field: {
-            message: "Some adventurer you are...",
+        Approach: {
+            message: "As you begin to approach them, they suddently start after you, yielding a knife. Fight or run away?",
+            background_image:"https://vignette.wikia.nocookie.net/abandoned-discovery-island-2017-edition/images/0/0b/7374086-a-dangerous-hooded-man-standing-in-the-dark-and-holding-a-shiny-knife-face-can-not-be-seen.jpg/revision/latest?cb=20180730224337",
             choices: [
                 {
-                    text: "Start over",
-                    nextLevel: "start",
+                    text:"Fight",
+                    nextLevel:"Fight",
                 },
-            ]
+                {
+                    text:"Run",
+                    nextLevel:"Run",
+                },
+                ]
         },
-
+        Fight:{
+            message:"You are overpowered and Killed.",
+            choices: [
+                {
+                    text:"Start Over",
+                    nextLevel:"room",
+                },
+                
+                ]
+            
+        },
+        Run:{
+            message:"You are caught and Killed. HA HA",
+            choices:[
+                {
+                    text:"Start Over",
+                    nextLevel:"room",
+                },
+                
+                ]
+        },
+        Down:{
+            message:"Dead end. Go back upstairs",
+            choices: [
+                {
+                    text:"Up",
+                    nextLevel:"up",
+                },
+                
+                ]
+            },
+        Wait:{
+            message:"You hope someone will come and find you so you wait. Night falls and an unknown figure approches you from behind and kills you silently and swiftly.",
+            choices: [
+                {
+                    text:"Start Over",
+                    nextLevel:"room",
+                },
+                
+                ]
+        },
+        Hide:{
+            message:"You notice his bloodstained clothes and knife so you decided to hide. While observing you didn't notice a second figure approach you from behind. You are killed",
+            choices: [
+                {
+                    text:"Start Over",
+                    nextLevel:"room",
+                },
+                ]
+        }
     }
 };
+

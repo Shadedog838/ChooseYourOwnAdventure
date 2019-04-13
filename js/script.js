@@ -1,7 +1,7 @@
 /* global $ */
 
 $(document).ready(function() {
-    var firstLevel = game.levels.start;
+    var firstLevel = game.levels.room;
     renderLevel(firstLevel);
 
     // When user clicks a choice, go to the next level
@@ -23,6 +23,8 @@ function renderLevel(level) {
     if (choices) {
         for (var i = 0; i < choices.length; i++) {
             var choice = choices[i];
+            console.log(choice);
+            console.log(i);
             $("#choices").append("<button class='btn btn-outline-secondary' data-next-level='" + choice.nextLevel + "'>" + choice.text + "</button>");
         }
     }
@@ -44,7 +46,7 @@ function setMusic(level) {
 
 function setImage(level) {
     var image = level.background_image || game.background_image || "";
-    $("#background-image").css("background-image", "url(./img/" + image + ")");
+    $("#background-image").css("background-image", "url("+"'" + image +"'"+ ")");
 }
 
 $.fn.extend({
