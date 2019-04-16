@@ -1,5 +1,5 @@
 /* global $ */
-
+var message=game.levels.room.message;
 $(document).ready(function() {
     var firstLevel = game.levels.room;
     renderLevel(firstLevel);
@@ -7,15 +7,23 @@ $(document).ready(function() {
     // When user clicks a choice, go to the next level
     $("body").on("click", "#choices button", function() {
         var nextLevel = $(this).attr("data-next-level");
+
         $("#wrapper").animateCss("fadeOut", function() {
             renderLevel(game.levels[nextLevel]);
+            console.log(game.levels[nextLevel].message);
+            message=game.levels[nextLevel].message;
             $("#wrapper").removeClass("fadeOut");
             $("#wrapper").addClass("fadeIn");
+
         });
     });
 });
+$("#prompt").click(function(){
+window.speechSynthesis.speak(new SpeechSynthesisUtterance(message));
+});
 
 function renderLevel(level) {
+
     $("#prompt").text(level.message);
     $("#choices").empty();
 
